@@ -1,0 +1,10 @@
+<h1>Hello world!</h1>
+
+<ol>
+<% @webhooks.each do |w| %>
+	<li style="margin-bottom: 25px">
+		<%= w.hook_id %>
+		<%= w.body %>
+	</li>
+<% end %>
+</ol>
