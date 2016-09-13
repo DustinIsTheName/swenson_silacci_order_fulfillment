@@ -1,5 +1,5 @@
 class EmailsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :receive
+  skip_before_filter :verify_authenticity_token, :only => :receive_order_created
 
   def index
 
