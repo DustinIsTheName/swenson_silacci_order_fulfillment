@@ -96,25 +96,37 @@ module EmailsHelper
 			"Product Amount1"=> $main_product['price'],
 			"Product Code1"=> $main_product['sku'],
 			"Product Description1"=> '',
-			"Product Qty1"=> 1,
-			"Recipient Address1"=> order_body['shipping_address']['address1'],
-			"Recipient Address2"=> order_body['shipping_address']['address2'],
-			"Recipient City"=> order_body['shipping_address']['city'],
-			"Recipient Company"=> order_body['shipping_address']['company'],
-			"Recipient Country Code"=> order_body['shipping_address']['country_code'],
-			"Recipient Name"=> order_body['shipping_address']['name'],
-			"Recipient Phone Area Code"=> ship_phone_area,
-			"Recipient Phone Extension"=> ship_phone_extension,
-			"Recipient Phone Number"=> ship_phone_number,
-			"Recipient Phone Prefix"=> ship_phone_prefix,
-			"Recipient State"=> order_body['shipping_address']['province_code'],
-			"Recipient Zip Code"=> order_body['shipping_address']['zip'],
-			"Relay Charge"=> '',
-			"Retrans Charge"=> '',
-			"Service Charge"=> service_price,
-			"Tax Amount"=> order_body['total_tax'],
-			"Total Order Amount"=> order_body['total_price']
+			"Product Qty1"=> 1
 		}
+
+		i = 2
+
+		$misc_prods.each do |misc_prod|
+			order_to_mercury["Product Amount"+i.to_s] = misc_prod['price']
+			order_to_mercury["Product Code"+i.to_s] = misc_prod['sku']
+			order_to_mercury["Product Description"+i.to_s] = ''
+			order_to_mercury["Product Qty"+i.to_s] = misc_prod['quantity']
+
+			i += 1
+		end
+
+		order_to_mercury["Recipient Address1"] = order_body['shipping_address']['address1']
+		order_to_mercury["Recipient Address2"] = order_body['shipping_address']['address2']
+		order_to_mercury["Recipient City"] = order_body['shipping_address']['city']
+		order_to_mercury["Recipient Company"] = order_body['shipping_address']['company']
+		order_to_mercury["Recipient Country Code"] = order_body['shipping_address']['country_code']
+		order_to_mercury["Recipient Name"] = order_body['shipping_address']['name']
+		order_to_mercury["Recipient Phone Area Code"] = ship_phone_area
+		order_to_mercury["Recipient Phone Extension"] = ship_phone_extension
+		order_to_mercury["Recipient Phone Number"] = ship_phone_number
+		order_to_mercury["Recipient Phone Prefix"] = ship_phone_prefix
+		order_to_mercury["Recipient State"] = order_body['shipping_address']['province_code']
+		order_to_mercury["Recipient Zip Code"] = order_body['shipping_address']['zip']
+		order_to_mercury["Relay Charge"] = ''
+		order_to_mercury["Retrans Charge"] = ''
+		order_to_mercury["Service Charge"] = service_price
+		order_to_mercury["Tax Amount"] = order_body['total_tax']
+		order_to_mercury["Total Order Amount"] = order_body['total_price']
 
 		order_to_mercury
 
