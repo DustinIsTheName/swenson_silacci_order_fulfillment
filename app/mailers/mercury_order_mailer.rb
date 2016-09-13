@@ -1,4 +1,5 @@
 class MercuryOrderMailer < ApplicationMailer
+	add_template_helper(AnnotationsHelper)
 
 	default to: 'dustin@wittycreative.com'
 
@@ -6,8 +7,10 @@ class MercuryOrderMailer < ApplicationMailer
 
 		@body = body
 
-		mail(from: 'no-reply@shopify.com', subject: 'New Online Flowers Order')
+		mail(from: 'no-reply@shopify.com', subject: 'CMG Test Order') do |format|
+			format.text
+		end
 
 	end
-	
+
 end

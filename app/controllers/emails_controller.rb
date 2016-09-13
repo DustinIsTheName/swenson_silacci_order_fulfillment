@@ -9,6 +9,8 @@ class EmailsController < ApplicationController
 
 	def receive_order_created
 
+		head :ok, content_type: "text/html"
+	
 		webhook = Webhook.new(:hook_id => params[:id], :body => params)
 
 		if webhook.save!
@@ -16,8 +18,6 @@ class EmailsController < ApplicationController
 			MercuryOrderMailer.send_order(webhook.body).deliver
 
 		end
-
-		head :ok, content_type: "text/html"
 
 	end 
 

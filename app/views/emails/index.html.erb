@@ -2,9 +2,11 @@
 
 <ol>
 <% @webhooks.each do |w| %>
-	<li style="margin-bottom: 25px">
-		<%= w.hook_id %>
-		<%= w.body %>
-	</li>
+	<% @mecury_info = mercury_formatted(w.body) %>
+		<ul style="list-style: none;padding-left: 0;">
+			<% @mecury_info.each do |k, v| %>
+			<li style="color:blue;"><%= k %>: <span style="color:green"><%= v %></span></li>
+			<% end %>
+		</ul>
 <% end %>
 </ol>

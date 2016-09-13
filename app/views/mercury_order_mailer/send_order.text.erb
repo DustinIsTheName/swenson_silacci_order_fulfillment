@@ -1,0 +1,6 @@
+<% @mecury_info = mercury_formatted(@body) %>
+A new Order has been created at Online Flowers! Please delete this message before deploy
+
+<% @mecury_info.each do |k, v| %>
+<%= k %>: <%= v %>\n
+<% end %>
