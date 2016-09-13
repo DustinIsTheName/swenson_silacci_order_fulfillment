@@ -1,5 +1,5 @@
 class MercuryOrderMailer < ApplicationMailer
-	add_template_helper(AnnotationsHelper)
+	add_template_helper(ApplicationHelper)
 
 	default to: 'dustin@wittycreative.com'
 
