@@ -54,9 +54,9 @@ module ApplicationHelper
 		end
 
 		service_price = if $service_product then $service_product['price'] else '' end
-		delivery_day = $main_product['properties_object']['Delivery Date'].split('/')[1],
-		delivery_month = $main_product['properties_object']['Delivery Date'].split('/')[0],
-		delivery_year = $main_product['properties_object']['Delivery Date'].split('/')[2],
+		delivery_day = $main_product['properties_object']['Delivery Date'].split('/')[1]
+		delivery_month = $main_product['properties_object']['Delivery Date'].split('/')[0]
+		delivery_year = $main_product['properties_object']['Delivery Date'].split('/')[2]
 
 		order_to_mercury = {
 			"Additional Information"=> '',
@@ -94,8 +94,8 @@ module ApplicationHelper
 			"Email Address"=> order_body['email'],
 			"Occasion Code"=> $main_product['properties_object']['Occasion Code'],
 			"Product Amount1"=> $main_product['price'],
-			"Product Code1"=> $main_product['title'],
-			"Product Description1"=> '',
+			"Product Code1"=> $main_product['sku'],
+			"Product Description1"=> $main_product['title'],
 			"Product Qty1"=> 1
 		}
 
@@ -131,5 +131,85 @@ module ApplicationHelper
 		order_to_mercury
 
 	end
+
+	def ajax_mercury_formatted(order_from_ajax)
+
+		prop = order_from_ajax['properties']
+
+		delivery_day = prop['Delivery Date'].split('/')[1]
+		delivery_month = prop['Delivery Date'].split('/')[0]
+		delivery_year = prop['Delivery Date'].split('/')[2]
+
+		order_to_mercury = {
+			"Additional Information"=> '',
+			"Bill Address1"=> prop['Bill Address1'],
+			"Bill Address2"=> '',
+			"Bill City"=> prop['Bill City'],
+			"Bill Country"=> prop['BillCountry'],
+			"Bill Fax Area Code"=> '',
+			"Bill Fax Number"=> '',
+			"Bill Fax Prefix"=> '',
+			"Bill Name"=> prop['Bill Name'],
+			"Bill Phone Area Code"=> prop['Bill Phone'].gsub('-', '').gsub('.', '')[0..2],
+			"Bill Phone Extension"=> '',
+			"Bill Phone Number"=> prop['Bill Phone'].gsub('-', '').gsub('.', ''),
+			"Bill Phone Prefix"=> prop['Bill Phone'].gsub('-', '').gsub('.', '')[3..5],
+			"Bill Phone2 Area Code"=> prop['Bill Phone2'].gsub('-', '').gsub('.', '')[0..2],
+			"Bill Phone2 Extension"=> prop['Bill Phone2 Ext'],
+			"Bill Phone2 Number"=> prop['Bill Phone2'].gsub('-', '').gsub('.', ''),
+			"Bill Phone2 Prefix"=> prop['Bill Phone2'].gsub('-', '').gsub('.', '')[3..5],
+			"Bill State"=> prop['Bill State'],
+			"Bill Zip Code"=> prop['Bill Zip Code'],
+			"Card Message"=> prop['Card Message'],
+			"CC Cardholder"=> '',
+			"CC Company"=> 'INHOUSE',
+			"CC CVV Code"=> '',
+			"CC Expiration (Month)"=> '',
+			"CC Expiration (Year)"=> '',
+			"CC Number"=> '',
+			"Delivery (Day)"=> delivery_day,
+			"Delivery (Month)"=> delivery_month,
+			"Delivery (Year)"=> delivery_year,
+			"Delivery Charge"=> '',
+			"Delivery Instructions"=> prop['Delivery Instructions'],
+			"Discount Amount"=> '',
+			"Email Address"=> prop['Bill Email'],
+			"Occasion Code"=> prop['Occasion Code'],
+			"Product Amount1"=> prop['Product1 Amount'],
+			"Product Code1"=> prop['Product1 Sku'],
+			"Product Description1"=> prop['Product1 Name'],
+			"Product Qty1"=> 1,
+			"Product Amount2"=> sprintf('%.2f', prop['Product2 Amount']),
+			"Product Code2"=> prop['Product2 Sku'],
+			"Product Description2"=> prop['Product2 Name'],
+			"Product Qty2"=> prop['bears_qty'],
+			"Product Amount3"=> sprintf('%.2f', prop['Product3 Amount']),
+			"Product Code3"=> prop['Product3 Sku'],
+			"Product Description3"=> prop['Product3 Name'],
+			"Product Qty3"=> prop['balloons_qty'],
+			"Recipient Address1"=> prop['Ship Address1'],
+			"Recipient Address2"=> '',
+			"Recipient City"=> prop['Ship City'],
+			"Recipient Company"=> prop['Ship Company'],
+			"Recipient Country Code"=> prop['ShipCountry'],
+			"Recipient Name"=> prop['Ship Name'],
+			"Recipient Phone Area Code"=> prop['Ship Phone'].gsub('-', '').gsub('.', '')[0..2],
+			"Recipient Phone Extension"=> prop['Ship Phone2 Ext'],
+			"Recipient Phone Number"=> prop['Ship Phone'].gsub('-', '').gsub('.', ''),
+			"Recipient Phone Prefix"=> prop['Ship Phone'].gsub('-', '').gsub('.', '')[3..5],
+			"Recipient State"=> prop['Ship State'],
+			"Recipient Zip Code"=> prop['Ship Zip Code'],
+			"Relay Charge"=> '',
+			"Retrans Charge"=> '',
+			"Service Charge"=> prop['Service Charge'],
+			"Tax Amount"=> prop['Tax Amount'],
+			"Total Order Amount"=> prop['Total Order Amount']
+		}
+
+		order_to_mercury
+
+	end
+
+
 
 end

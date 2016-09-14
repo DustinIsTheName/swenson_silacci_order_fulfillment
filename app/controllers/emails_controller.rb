@@ -1,9 +1,11 @@
 class EmailsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :receive_order_created
+  skip_before_filter :verify_authenticity_token, :only => [:receive_order_created, :receive_ajax]
 
   def index
 
   	@webhooks = Webhook.all
+
+  	@ajax = AjaxRequest.all
 
   end
 
@@ -20,5 +22,17 @@ class EmailsController < ApplicationController
 		end
 
 	end 
+
+	def receive_ajax
+
+		ajax = AjaxRequest.new(:body => params)
+
+		if ajax.save!
+
+			MercuryOrderMailer.send_ajax_order(ajax.body).deliver
+
+		end
+
+	end
 
 end

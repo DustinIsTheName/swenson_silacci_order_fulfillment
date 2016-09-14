@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(function() {
+	$('.toggle').click(function() {
+		console.log('vvv');
+		$('.shopify').toggle();
+		$('.ajax').toggle();
+	});
+});

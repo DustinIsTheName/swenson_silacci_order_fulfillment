@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root :to => 'emails#index'
 
   post 'order-creation' => 'emails#receive_order_created'
+  post 'ajax-order-creation' => 'emails#receive_ajax'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
