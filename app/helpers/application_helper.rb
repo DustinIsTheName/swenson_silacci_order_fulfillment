@@ -94,7 +94,7 @@ module ApplicationHelper
 			"Email Address"=> order_body['email'],
 			"Occasion Code"=> $main_product['properties_object']['Occasion Code'],
 			"Product Amount1"=> $main_product['price'],
-			"Product Code1"=> $main_product['sku'],
+			"Product Code1"=> $main_product['title'],
 			"Product Description1"=> '',
 			"Product Qty1"=> 1
 		}
@@ -104,7 +104,7 @@ module ApplicationHelper
 		$misc_prods.each do |misc_prod|
 			order_to_mercury["Product Amount"+i.to_s] = misc_prod['price']
 			order_to_mercury["Product Code"+i.to_s] = misc_prod['sku']
-			order_to_mercury["Product Description"+i.to_s] = ''
+			order_to_mercury["Product Description"+i.to_s] = misc_prod['title']
 			order_to_mercury["Product Qty"+i.to_s] = misc_prod['quantity']
 
 			i += 1
