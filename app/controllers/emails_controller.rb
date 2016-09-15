@@ -15,8 +15,8 @@ class EmailsController < ApplicationController
 	
 		webhook = Webhook.new(:hook_id => params[:id], :body => params)
 
-		if webhook[:body][:note]
-			unless webhook[:body][:note].include? 'house_account:'
+		if webhook[:body]["note"]
+			unless webhook[:body]["note"].include? 'house_account:'
 				if webhook.save!
 
 					MercuryOrderMailer.send_order(webhook.body).deliver
@@ -30,8 +30,7 @@ class EmailsController < ApplicationController
 
 			end
 		end
-
-	end 
+	end
 
 	def receive_ajax
 
