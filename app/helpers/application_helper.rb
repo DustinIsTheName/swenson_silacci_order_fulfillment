@@ -132,7 +132,7 @@ module ApplicationHelper
 
 	end
 
-	def ajax_mercury_formatted(order_from_ajax, send_order?)
+	def ajax_mercury_formatted(order_from_ajax, send_order)
 
 		prop = order_from_ajax['properties']
 
@@ -206,7 +206,7 @@ module ApplicationHelper
 			"Total Order Amount"=> prop['Total Order Amount']
 		}
 
-		# create_order(order_to_mercury, order_from_ajax) if send_order?
+		# create_order(order_to_mercury, order_from_ajax) if send_order
 
 		order_to_mercury
 
