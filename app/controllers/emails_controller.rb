@@ -40,8 +40,6 @@ class EmailsController < ApplicationController
 
 			MercuryOrderMailer.send_ajax_order(ajax.body).deliver
 
-
-
 		end
 
 	end
