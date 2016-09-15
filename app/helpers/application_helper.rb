@@ -132,7 +132,7 @@ module ApplicationHelper
 
 	end
 
-	def ajax_mercury_formatted(order_from_ajax)
+	def ajax_mercury_formatted(order_from_ajax, send_order?)
 
 		prop = order_from_ajax['properties']
 
@@ -161,7 +161,7 @@ module ApplicationHelper
 			"Bill State"=> prop['Bill State'],
 			"Bill Zip Code"=> prop['Bill Zip Code'],
 			"Card Message"=> prop['Card Message'],
-			"CC Cardholder"=> '',
+			"CC Cardholder"=> prop['House Account'],
 			"CC Company"=> 'INHOUSE',
 			"CC CVV Code"=> '',
 			"CC Expiration (Month)"=> '',
@@ -206,10 +206,64 @@ module ApplicationHelper
 			"Total Order Amount"=> prop['Total Order Amount']
 		}
 
+		# create_order(order_to_mercury, order_from_ajax) if send_order?
+
 		order_to_mercury
 
 	end
 
+	# def create_order(new_order, ajax_info)
 
+	# 	shopify_shop='online-flowers.myshopify.com'
+	# 	shopify_api_key='5ed4ffc9501be79baa8c49f1a3aeb30a'
+	# 	shopify_password='6b98afdfba10e51c12ca14145cb27652'
+
+	# 	ShopifyAPI::Base.site = "https://#{shopify_api_key}:#{shopify_password}@#{shopify_shop}/admin"
+
+	# 	qued_order = {
+	# 	  order: {
+	# 	    line_items: [
+	# 	    	{
+	# 	    		title: 
+	# 	    		price:
+	# 	    		quantity:
+	# 	    		variant_id: ajax_info[:id],
+	# 	    		properties: [
+	# 	    			{
+	# 	    				"Delivery Date": ajax_info[:properties]
+	# 	    				"Location Type":
+	# 	    				"Occasion Code":
+	# 	    				"Card Message":
+	# 	    			}
+	# 	    		]
+	#     		},
+	# 	    	{
+
+	#     		},
+	#     		{
+
+ #    			},
+	# 	    ],
+	# 	    billing_address: {
+	# 	    	address1: new_order['Bill Address1'],
+	# 	    	city: new_order['Bill City'],
+	# 	    	country: new_order['Bill Country'],
+	# 	    	phone: new_order['Bill Phone Number'],
+	# 	    	zip: new_order['Bill Zip Code'],
+	# 	    	name: new_order['Bill Name'],
+	# 	    	province_code: new_order['Bill State'],
+	# 	    	country_code: new_order['Bill Country']
+	# 	    },
+	# 	    email: new_order['Email Address'],
+	# 	    note: 'house_account:' + prop['House Account'],
+
+	# 	  }
+	# 	}
+
+	# 	shopify_order = ShopifyAPI::Order.new(qued_order)
+
+	# 	shopify_order.save
+
+	# end
 
 end
