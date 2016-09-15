@@ -23,6 +23,12 @@ class EmailsController < ApplicationController
 
 				end
 			end
+		else
+			if webhook.save!
+
+				MercuryOrderMailer.send_order(webhook.body).deliver
+
+			end
 		end
 
 	end 
