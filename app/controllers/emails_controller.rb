@@ -15,11 +15,13 @@ class EmailsController < ApplicationController
 	
 		webhook = Webhook.new(:hook_id => params[:id], :body => params)
 
-		unless webhook[:body][:note].include? 'house_account:'
-			if webhook.save!
+		if webhook[:body][:note]
+			unless webhook[:body][:note].include? 'house_account:'
+				if webhook.save!
 
-				MercuryOrderMailer.send_order(webhook.body).deliver
+					MercuryOrderMailer.send_order(webhook.body).deliver
 
+				end
 			end
 		end
 
