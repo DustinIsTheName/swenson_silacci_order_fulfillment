@@ -21,36 +21,40 @@ module ApplicationHelper
 			end
 		end
 
-		if order_body['billing_address']['phone']
+		if order_body['billing_address']
+			if order_body['billing_address']['phone']
 
-			bill_phone_area = order_body['billing_address']['phone'][0..2]
-			bill_phone_extension = ''
-			bill_phone_number = order_body['billing_address']['phone']
-			bill_phone_prefix = order_body['billing_address']['phone'][4..6]
+				bill_phone_area = order_body['billing_address']['phone'][0..2]
+				bill_phone_extension = ''
+				bill_phone_number = order_body['billing_address']['phone']
+				bill_phone_prefix = order_body['billing_address']['phone'][4..6]
 
-		else
+			else
 
-			bill_phone_area = ''
-			bill_phone_extension = ''
-			bill_phone_number = ''
-			bill_phone_prefix = ''
+				bill_phone_area = ''
+				bill_phone_extension = ''
+				bill_phone_number = ''
+				bill_phone_prefix = ''
 
+			end
 		end
 
-		if order_body['shipping_address']['phone']
+		if order_body['shipping_address']
+			if order_body['shipping_address']['phone']
 
-			ship_phone_area = order_body['shipping_address']['phone'][0..2]
-			ship_phone_extension = ''
-			ship_phone_number = order_body['shipping_address']['phone']
-			ship_phone_prefix = order_body['shipping_address']['phone'][4..6]
+				ship_phone_area = order_body['shipping_address']['phone'][0..2]
+				ship_phone_extension = ''
+				ship_phone_number = order_body['shipping_address']['phone']
+				ship_phone_prefix = order_body['shipping_address']['phone'][4..6]
 
-		else
+			else
 
-			ship_phone_area = ''
-			ship_phone_extension = ''
-			ship_phone_number = ''
-			ship_phone_prefix = ''
+				ship_phone_area = ''
+				ship_phone_extension = ''
+				ship_phone_number = ''
+				ship_phone_prefix = ''
 
+			end
 		end
 
 		service_price = if $service_product then $service_product['price'] else '' end
