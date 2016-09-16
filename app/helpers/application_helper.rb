@@ -206,17 +206,23 @@ module ApplicationHelper
 			"Total Order Amount"=> prop['Total Order Amount']
 		}
 
-		# create_order(order_to_mercury, order_from_ajax) if send_order
+		create_order(order_to_mercury, order_from_ajax, prop) if send_order
 
 		order_to_mercury
 
 	end
 
-	def create_order(new_order, ajax_info)
+	def create_order(new_order, ajax_info, prop)
 
 		shopify_shop='online-flowers.myshopify.com'
 		shopify_api_key='5ed4ffc9501be79baa8c49f1a3aeb30a'
 		shopify_password='6b98afdfba10e51c12ca14145cb27652'
+
+		if prop['House Account']
+			house_account = prop['House Account']
+		else
+			house_account = ''
+		end
 
 		ShopifyAPI::Base.site = "https://#{shopify_api_key}:#{shopify_password}@#{shopify_shop}/admin"
 
@@ -225,52 +231,50 @@ module ApplicationHelper
 		    line_items: [
 		    	{	
 		    		quantity: 1,
-		    		variant_id: ajax_info[:id],
+		    		variant_id: ajax_info["id"],
 		    		properties: [
-		    			{
-		    				"Delivery Date": ajax_info[:properties]['Delivery Date'],
-		    				"Location Type": ajax_info[:properties]['Location Type'],
-		    				"Occasion Code": ajax_info[:properties]['Occasion Code'],
-		    				"Card Message": ajax_info[:properties]['Card Message']
-		    			}
+	    				{"name"=>"Delivery Date", "value"=> prop['Delivery Date']},
+	    				{"name"=>"Location Type", "value"=> prop['Location Type']},
+	    				{"name"=>"Occasion Code", "value"=> prop['Occasion Code']},
+	    				{"name"=>"Card Message", "value"=> prop['Card Message']}
 		    		]
 	    		},
 		    	{
-		    		variant_id: ajax_info[:bear_id],
+		    		variant_id: ajax_info["bear_id"],
 		    		quantity: new_order['Product Qty2']
 	    		},
 	    		{
-		    		variant_id: ajax_info[:balloon_id],
+		    		variant_id: ajax_info["balloon_id"],
 		    		quantity: new_order['Product Qty3']
     			},
     			{
-    				variant_id: ajax_info[:service_id],
+    				variant_id: ajax_info["service_id"],
     				quantity: 1
     			}
 		    ],
 		    billing_address: {
 		    	address1: new_order['Bill Address1'],
 		    	city: new_order['Bill City'],
-		    	country: new_order['BillCountry'],
+		    	country: new_order['Bill Country'],
 		    	phone: new_order['Bill Phone Number'],
 		    	zip: new_order['Bill Zip Code'],
 		    	name: new_order['Bill Name'],
 		    	province: new_order['Bill State']
 		    },
 		    shipping_address: {
-		    	address1: new_order['Ship Address1'],
-		    	city: new_order['Ship City'],
-		    	country: new_order['ShipCountry'],
-		    	phone: new_order['Ship Phone'],
-		    	zip: new_order['Ship Zip Code'],
-		    	name: new_order['Ship Name'],
-		    	province: new_order['Ship State']
+		    	address1: new_order['Recipient Address1'],
+		    	city: new_order['Recipient City'],
+		    	country: new_order['Recipient Country Code'],
+		    	phone: new_order['Recipient Phone Number'],
+		    	zip: new_order['Recipient Zip Code'],
+		    	name: new_order['Recipient Name'],
+		    	province: new_order['Recipient State']
 		    },
 		    email: new_order['Email Address'],
-		    note: 'house_account:' + prop['House Account'],
+		    note: 'house_account:' + house_account,
 		    tax_line: [
           {
-            price: ajax_info[:properties]['Tax Amount']
+            price: prop['Tax Amount']
           }
         ]
 		  }
