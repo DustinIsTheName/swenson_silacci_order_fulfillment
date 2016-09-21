@@ -282,7 +282,7 @@ module ApplicationHelper
 		    	name: new_order['Recipient Name'],
 		    	province: new_order['Recipient State']
 		    },
-		    email: new_order['Email Address'],
+		    email: new_order['E-mail Address'],
 		    note: 'house_account:' + house_account,
 		    tax_line: [
           {
