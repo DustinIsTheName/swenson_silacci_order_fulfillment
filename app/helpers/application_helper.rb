@@ -191,6 +191,10 @@ module ApplicationHelper
 			"Product Code3"=> prop['Product3 Sku'],
 			"Product Description3"=> prop['Product3 Name'],
 			"Product Qty3"=> prop['balloons_qty'],
+			"Product Amount4"=> prop['Product4 Amount'],
+			"Product Code4"=> prop['Product4 Sku'],
+			"Product Description4"=> prop['Product4 Name'],
+			"Product Qty4"=> prop['chocolates_qty'],
 			"Recipient Address1"=> prop['Ship Address1'],
 			"Recipient Address2"=> '',
 			"Recipient City"=> prop['Ship City'],
@@ -250,6 +254,10 @@ module ApplicationHelper
 	    		{
 		    		variant_id: ajax_info["balloon_id"],
 		    		quantity: new_order['Product Qty3']
+    			},
+	    		{
+		    		variant_id: ajax_info["chocolate_id"],
+		    		quantity: new_order['Product Qty4']
     			},
     			{
     				variant_id: ajax_info["service_id"],
