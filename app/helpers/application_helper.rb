@@ -222,9 +222,9 @@ module ApplicationHelper
 
 	def create_order(new_order, ajax_info, prop)
 
-		shopify_shop='online-flowers.myshopify.com'
-		shopify_api_key='5ed4ffc9501be79baa8c49f1a3aeb30a'
-		shopify_password='6b98afdfba10e51c12ca14145cb27652'
+		shopify_shop='swenson-and-silacci-flowers.myshopify.com'
+		shopify_api_key='4cc4f2b265e47caddfbf4fdab6c66b48'
+		shopify_password='a6bff4ed6538965649c18c70bfe0f39f'
 
 		if prop['House Account']
 			house_account = prop['House Account']
