@@ -138,7 +138,7 @@ module ApplicationHelper
 
 	def ajax_mercury_formatted(order_from_ajax, send_order)
 
-		prop = order_from_ajax['properties']
+		prop = order_from_ajax['attributes']
 
 		delivery_day = prop['Delivery Date'].split('/')[1]
 		delivery_month = prop['Delivery Date'].split('/')[0]

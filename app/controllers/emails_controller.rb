@@ -34,6 +34,8 @@ class EmailsController < ApplicationController
 
 	def receive_ajax
 
+		headers['Access-Control-Allow-Origin'] = '*'
+
 		ajax = AjaxRequest.new(:body => params)
 
 		if ajax.save!
