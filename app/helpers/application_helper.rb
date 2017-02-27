@@ -288,6 +288,11 @@ module ApplicationHelper
 		  }
 		}
 
+		puts new_order
+		puts ajax_info
+		puts prop
+		puts qued_order
+
 		shopify_order = ShopifyAPI::Order.new(qued_order)
 
 		shopify_order.save
