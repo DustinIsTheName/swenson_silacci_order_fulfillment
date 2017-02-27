@@ -3,6 +3,11 @@ module ApplicationHelper
 	def mercury_formatted(order_body)
 
 		$misc_prods = []
+		attributes = {}
+
+		for attri in order_body['note_attributes']
+			attributes[attri[0]] = attri[1]
+		end
 
 		for line in order_body['line_items']
 			if line['properties']
@@ -58,9 +63,9 @@ module ApplicationHelper
 		end
 
 		service_price = if $service_product then $service_product['price'] else '' end
-		delivery_day = $main_product['properties_object']['Delivery Date'].split('/')[1]
-		delivery_month = $main_product['properties_object']['Delivery Date'].split('/')[0]
-		delivery_year = $main_product['properties_object']['Delivery Date'].split('/')[2]
+		delivery_day = attributes['Delivery Date'].split('/')[1]
+		delivery_month = attributes['Delivery Date'].split('/')[0]
+		delivery_year = attributes['Delivery Date'].split('/')[2]
 
 		order_to_mercury = {
 			"Additional Information"=> '',
@@ -82,7 +87,7 @@ module ApplicationHelper
 			"Bill Phone2 Prefix"=> '',
 			"Bill State"=> order_body['billing_address']['province_code'],
 			"Bill Zip Code"=> order_body['billing_address']['zip'],
-			"Card Message"=> $main_product['properties_object']['Card Message'],
+			"Card Message"=> attributes['Card Message'],
 			"CC Cardholder"=> '',
 			"CC Company"=> order_body['payment_details']['credit_card_company'],
 			"CC CVV Code"=> '',
@@ -93,10 +98,10 @@ module ApplicationHelper
 			"Delivery (Month)"=> delivery_month,
 			"Delivery (Year)"=> delivery_year,
 			"Delivery Charge"=> '',
-			"Delivery Instructions"=> $main_product['properties_object']['Delivery Instructions'],
+			"Delivery Instructions"=> attributes['Delivery Instructions'],
 			"Discount Amount"=> order_body['total_discounts'],
 			"E-mail Address"=> order_body['email'],
-			"Occasion Code"=> $main_product['properties_object']['Occasion Code'],
+			"Occasion Code"=> attributes['Occasion Code'],
 			"Product Amount1"=> $main_product['price'],
 			"Product Code1"=> $main_product['sku'],
 			"Product Description1"=> $main_product['title'],
