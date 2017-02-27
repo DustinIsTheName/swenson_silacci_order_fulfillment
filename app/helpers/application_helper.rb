@@ -6,7 +6,7 @@ module ApplicationHelper
 		attributes = {}
 
 		for attri in order_body['note_attributes']
-			attributes[attri[0]] = attri[1]
+			attributes[attri.name] = attri.value
 		end
 
 		for line in order_body['line_items']
