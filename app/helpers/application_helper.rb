@@ -6,7 +6,8 @@ module ApplicationHelper
 		attributes = {}
 
 		for attri in order_body['note_attributes']
-			attributes[attri.name] = attri.value
+			puts '\e[38;5;208m' << attri.to_s << '\e[0m'
+			attributes[attri["name"]] = attri["value"]
 		end
 
 		for line in order_body['line_items']
