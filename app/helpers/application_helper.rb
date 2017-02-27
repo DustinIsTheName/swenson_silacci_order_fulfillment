@@ -247,8 +247,8 @@ module ApplicationHelper
 		    		variant_id: ajax_info["id"],
 		    		properties: [
 	    				{"name"=>"Delivery Date", "value"=> prop['Delivery Date']},
-	    				{"name"=>"Location Type", "value"=> prop['Location Type']},
-	    				{"name"=>"Occasion Code", "value"=> prop['Occasion Code']},
+	    				# {"name"=>"Location Type", "value"=> prop['Location Type']},
+	    				# {"name"=>"Occasion Code", "value"=> prop['Occasion Code']},
 	    				{"name"=>"Card Message", "value"=> prop['Card Message']}
 		    		]
 	    		},
