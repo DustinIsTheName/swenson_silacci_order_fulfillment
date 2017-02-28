@@ -251,23 +251,7 @@ module ApplicationHelper
 	    				# {"name"=>"Occasion Code", "value"=> prop['Occasion Code']},
 	    				{"name"=>"Card Message", "value"=> prop['Card Message']}
 		    		]
-	    		},
-		    	{
-		    		variant_id: ajax_info["bear_id"],
-		    		quantity: new_order['Product Qty2']
-	    		},
-	    		{
-		    		variant_id: ajax_info["balloon_id"],
-		    		quantity: new_order['Product Qty3']
-    			},
-	    		{
-		    		variant_id: ajax_info["chocolate_id"],
-		    		quantity: new_order['Product Qty4']
-    			},
-    			{
-    				variant_id: ajax_info["service_id"],
-    				quantity: 1
-    			}
+	    		}
 		    ],
 		    shipping_address: {
 		    	address1: new_order['Recipient Address1'],
@@ -293,6 +277,11 @@ module ApplicationHelper
         ]
 		  }
 		}
+
+		qued_order[:order][:line_items] << { variant_id: ajax_info["bear_id"], quantity: new_order['Product Qty2'] } if new_order['Product Qty2']
+		qued_order[:order][:line_items] << { variant_id: ajax_info["balloon_id"], quantity: new_order['Product Qty3'] } if new_order['Product Qty3']
+		qued_order[:order][:line_items] << { variant_id: ajax_info["chocolate_id"], quantity: new_order['Product Qty4'] } if new_order['Product Qty4']
+		qued_order[:order][:line_items] << { variant_id: ajax_info["service_id"], quantity: 1 } if new_order['service_id'] != ''
 
 		shopify_order = ShopifyAPI::Order.new(qued_order)
 
