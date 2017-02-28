@@ -283,6 +283,10 @@ module ApplicationHelper
 		qued_order[:order][:line_items] << { variant_id: ajax_info["chocolate_id"], quantity: new_order['Product Qty4'] } if new_order['Product Qty4']
 		qued_order[:order][:line_items] << { variant_id: ajax_info["service_id"], quantity: 1 } if new_order['service_id'] != ''
 
+		puts qued_order
+
+		puts ajax_info
+
 		shopify_order = ShopifyAPI::Order.new(qued_order)
 
 		shopify_order.save
