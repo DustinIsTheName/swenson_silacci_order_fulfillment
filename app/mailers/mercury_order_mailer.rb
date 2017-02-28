@@ -8,7 +8,7 @@ class MercuryOrderMailer < ApplicationMailer
 
 		@body = body
 
-		mail(from: 'no-reply@shopify.com', subject: 'CMG Test Order') do |format|
+		mail(from: 'no-reply@shopify.com', subject: 'Swenson Silacci Order') do |format|
 			format.text
 		end
 
@@ -18,7 +18,7 @@ class MercuryOrderMailer < ApplicationMailer
 
 		@body = body
 
-		mail(from: 'no-reply@shopify.com', subject: 'CMG Test Order') do |format|
+		mail(from: 'no-reply@shopify.com', subject: 'Swenson Silacci Order') do |format|
 			format.text
 		end
 
