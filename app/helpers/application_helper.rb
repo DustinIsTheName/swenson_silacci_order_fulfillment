@@ -280,6 +280,12 @@ module ApplicationHelper
 		    },
 		    email: new_order['E-mail Address'],
 		    note: 'house_account:' + house_account,
+		    note_attributes: [
+					{"name"=>"Delivery Date", "value"=> prop['Delivery Date']},
+					# {"name"=>"Location Type", "value"=> prop['Location Type']},
+					# {"name"=>"Occasion Code", "value"=> prop['Occasion Code']},
+					{"name"=>"Card Message", "value"=> prop['Card Message']}
+		    ],
 		    tax_line: [
           {
             price: prop['Tax Amount']
@@ -287,11 +293,6 @@ module ApplicationHelper
         ]
 		  }
 		}
-
-		puts new_order
-		puts ajax_info
-		puts prop
-		puts qued_order
 
 		shopify_order = ShopifyAPI::Order.new(qued_order)
 
