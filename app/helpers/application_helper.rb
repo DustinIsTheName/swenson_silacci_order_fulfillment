@@ -89,11 +89,9 @@ module ApplicationHelper
 			"Bill Zip Code"=> order_body['billing_address']['zip'],
 			"Card Message"=> attributes['Card Message'],
 			"CC Cardholder"=> '',
-			"CC Company"=> order_body['payment_details']['credit_card_company'],
 			"CC CVV Code"=> '',
 			"CC Expiration (Month)"=> '',
 			"CC Expiration (Year)"=> '',
-			"CC Number"=> order_body['payment_details']['credit_card_number'],
 			"Delivery (Day)"=> delivery_day,
 			"Delivery (Month)"=> delivery_month,
 			"Delivery (Year)"=> delivery_year,
@@ -119,6 +117,14 @@ module ApplicationHelper
 			i += 1
 		end
 
+		if order_body['payment_details']
+			order_to_mercury["CC Company"] = order_body['payment_details']['credit_card_company']
+			order_to_mercury["CC Number"] = order_body['payment_details']['credit_card_number']
+		else
+			order_to_mercury["CC Company"] = 'Paypal'
+			order_to_mercury["CC Number"] = ''
+		end
+
 		order_to_mercury["Recipient Address1"] = order_body['shipping_address']['address1']
 		order_to_mercury["Recipient Address2"] = order_body['shipping_address']['address2']
 		order_to_mercury["Recipient City"] = order_body['shipping_address']['city']
@@ -137,7 +143,7 @@ module ApplicationHelper
 		order_to_mercury["Tax Amount"] = order_body['total_tax']
 		order_to_mercury["Total Order Amount"] = order_body['total_price']
 
-		order_to_mercury
+		Hash[order_to_mercury.sort]
 
 	end
 
