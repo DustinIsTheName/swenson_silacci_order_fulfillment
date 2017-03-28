@@ -1,8 +1,8 @@
 class MercuryOrderMailer < ApplicationMailer
 	add_template_helper(ApplicationHelper)
 
-	default to: 'mercury2@onlineflowersorders.com'
-	# default to: 'phil@teamcmg.com'
+	# default to: 'mercury2@onlineflowersorders.com'
+	default to: 'travis@wittycreative.com'
 
 	def send_order(body)
 
