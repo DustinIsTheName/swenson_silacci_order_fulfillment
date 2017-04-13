@@ -36,7 +36,7 @@ module ApplicationHelper
 
 			else
 
-				bill_phone_area = ''e
+				bill_phone_area = ''
 				bill_phone_extension = ''
 				bill_phone_number = ''
 				bill_phone_prefix = ''
