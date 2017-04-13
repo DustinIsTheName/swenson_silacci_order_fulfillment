@@ -36,7 +36,7 @@ module ApplicationHelper
 
 			else
 
-				bill_phone_area = ''
+				bill_phone_area = ''e
 				bill_phone_extension = ''
 				bill_phone_number = ''
 				bill_phone_prefix = ''
@@ -47,10 +47,10 @@ module ApplicationHelper
 		if order_body['shipping_address']
 			if order_body['shipping_address']['phone']
 
-				ship_phone_area = order_body['shipping_address']['phone'][0..2]
+				ship_phone_area = ''
 				ship_phone_extension = ''
 				ship_phone_number = order_body['shipping_address']['phone']
-				ship_phone_prefix = order_body['shipping_address']['phone'][4..6]
+				ship_phone_prefix = ''
 
 			else
 
@@ -69,9 +69,9 @@ module ApplicationHelper
 
 		order_to_mercury = {
 			"Additional Information"=> '',
-			"Bill Address1"=> order_body['billing_address']['address1'],
-			"Bill Address2"=> order_body['billing_address']['address2'],
-			"Bill City"=> order_body['billing_address']['city'],
+			"Bill Address1"=> order_body['billing_address']['address1'].strip,
+			"Bill Address2"=> order_body['billing_address']['address2'].strip,
+			"Bill City"=> order_body['billing_address']['city'].strip,
 			"Bill Country"=> order_body['billing_address']['country_code'],
 			"Bill Fax Area Code"=> '',
 			"Bill Fax Number"=> '',
@@ -125,9 +125,9 @@ module ApplicationHelper
 			order_to_mercury["CC Number"] = ''
 		end
 
-		order_to_mercury["Recipient Address1"] = order_body['shipping_address']['address1']
-		order_to_mercury["Recipient Address2"] = order_body['shipping_address']['address2']
-		order_to_mercury["Recipient City"] = order_body['shipping_address']['city']
+		order_to_mercury["Recipient Address1"] = order_body['shipping_address']['address1'].strip
+		order_to_mercury["Recipient Address2"] = order_body['shipping_address']['address2'].strip
+		order_to_mercury["Recipient City"] = order_body['shipping_address']['city'].strip
 		order_to_mercury["Recipient Company"] = order_body['shipping_address']['company']
 		order_to_mercury["Recipient Country Code"] = order_body['shipping_address']['country_code']
 		order_to_mercury["Recipient Name"] = order_body['shipping_address']['name']
