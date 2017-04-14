@@ -69,14 +69,14 @@ module ApplicationHelper
 
 		order_to_mercury = {
 			"Additional Information"=> '',
-			"Bill Address1"=> order_body['billing_address']['address1'].strip,
-			"Bill Address2"=> order_body['billing_address']['address2'].strip,
-			"Bill City"=> order_body['billing_address']['city'].strip,
+			"Bill Address1"=> order_body['billing_address']['address1']&.strip,
+			"Bill Address2"=> order_body['billing_address']['address2']&.strip,
+			"Bill City"=> order_body['billing_address']['city']&.strip,
 			"Bill Country"=> order_body['billing_address']['country_code'],
 			"Bill Fax Area Code"=> '',
 			"Bill Fax Number"=> '',
 			"Bill Fax Prefix"=> '',
-			"Bill Name"=> order_body['billing_address']['name'].strip,
+			"Bill Name"=> order_body['billing_address']['name']&.strip,
 			"Bill Phone Area Code"=> bill_phone_area,
 			"Bill Phone Extension"=> bill_phone_extension,
 			"Bill Phone Number"=> bill_phone_number,
@@ -87,7 +87,7 @@ module ApplicationHelper
 			"Bill Phone2 Prefix"=> '',
 			"Bill State"=> order_body['billing_address']['province_code'],
 			"Bill Zip Code"=> order_body['billing_address']['zip'],
-			"Card Message"=> attributes['Card Message'].strip,
+			"Card Message"=> attributes['Card Message']&.strip,
 			"CC Cardholder"=> '',
 			"CC CVV Code"=> '',
 			"CC Expiration (Month)"=> '',
@@ -96,9 +96,9 @@ module ApplicationHelper
 			"Delivery (Month)"=> delivery_month,
 			"Delivery (Year)"=> delivery_year,
 			"Delivery Charge"=> '',
-			"Delivery Instructions"=> attributes['Delivery Instructions'].strip,
+			"Delivery Instructions"=> attributes['Delivery Instructions']&.strip,
 			"Discount Amount"=> order_body['total_discounts'],
-			"E-mail Address"=> order_body['email'].strip,
+			"E-mail Address"=> order_body['email']&.strip,
 			"Occasion Code"=> attributes['Occasion Code'],
 			"Product Amount1"=> $main_product['price'],
 			"Product Code1"=> $main_product['sku'],
@@ -125,12 +125,12 @@ module ApplicationHelper
 			order_to_mercury["CC Number"] = ''
 		end
 
-		order_to_mercury["Recipient Address1"] = order_body['shipping_address']['address1'].strip
-		order_to_mercury["Recipient Address2"] = order_body['shipping_address']['address2'].strip
-		order_to_mercury["Recipient City"] = order_body['shipping_address']['city'].strip
-		order_to_mercury["Recipient Company"] = order_body['shipping_address']['company'].strip
+		order_to_mercury["Recipient Address1"] = order_body['shipping_address']['address1']&.strip
+		order_to_mercury["Recipient Address2"] = order_body['shipping_address']['address2']&.strip
+		order_to_mercury["Recipient City"] = order_body['shipping_address']['city']&.strip
+		order_to_mercury["Recipient Company"] = order_body['shipping_address']['company']&.strip
 		order_to_mercury["Recipient Country Code"] = order_body['shipping_address']['country_code']
-		order_to_mercury["Recipient Name"] = order_body['shipping_address']['name'].strip
+		order_to_mercury["Recipient Name"] = order_body['shipping_address']['name']&.strip
 		order_to_mercury["Recipient Phone Area Code"] = ship_phone_area
 		order_to_mercury["Recipient Phone Extension"] = ship_phone_extension
 		order_to_mercury["Recipient Phone Number"] = ship_phone_number
@@ -175,7 +175,7 @@ module ApplicationHelper
 			"Bill Phone2 Prefix"=> '',
 			"Bill State"=> '',
 			"Bill Zip Code"=> '',
-			"Card Message"=> prop['Card Message'].strip,
+			"Card Message"=> prop['Card Message']&.strip,
 			"CC Cardholder"=> prop['House Account'],
 			"CC Company"=> 'INHOUSE',
 			"CC CVV Code"=> '',
@@ -186,9 +186,9 @@ module ApplicationHelper
 			"Delivery (Month)"=> delivery_month,
 			"Delivery (Year)"=> delivery_year,
 			"Delivery Charge"=> '',
-			"Delivery Instructions"=> prop['Delivery Instructions'].strip,
+			"Delivery Instructions"=> prop['Delivery Instructions']&.strip,
 			"Discount Amount"=> '',
-			"E-mail Address"=> prop['Bill Email'].strip,
+			"E-mail Address"=> prop['Bill Email']&.strip,
 			"Occasion Code"=> prop['Occasion Code'],
 			"Product Amount1"=> prop['Product1 Amount'],
 			"Product Code1"=> prop['Product1 Sku'],
@@ -208,10 +208,10 @@ module ApplicationHelper
 			"Product Qty4"=> prop['chocolates_qty'],
 			"Recipient Address1"=> prop['Ship Address1'],
 			"Recipient Address2"=> '',
-			"Recipient City"=> prop['Ship City'].strip,
-			"Recipient Company"=> prop['Ship Company'].strip,
-			"Recipient Country Code"=> prop['ShipCountry'].strip,
-			"Recipient Name"=> prop['Ship Name'].strip,
+			"Recipient City"=> prop['Ship City']&.strip,
+			"Recipient Company"=> prop['Ship Company']&.strip,
+			"Recipient Country Code"=> prop['ShipCountry']&.strip,
+			"Recipient Name"=> prop['Ship Name']&.strip,
 			"Recipient Phone Area Code"=> prop['Ship Phone'].gsub('-', '').gsub('.', '')[0..2],
 			"Recipient Phone Extension"=> prop['Ship Phone2 Ext'],
 			"Recipient Phone Number"=> prop['Ship Phone'].gsub('-', '').gsub('.', ''),
