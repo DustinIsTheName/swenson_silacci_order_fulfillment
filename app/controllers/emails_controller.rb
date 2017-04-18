@@ -1,5 +1,5 @@
 class EmailsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => [:receive_order_created, :receive_ajax]
+  skip_before_filter :verify_authenticity_token, :only => [:receive_order_created, :receive_ajax, :checkout_ping]
 
   def index
 
@@ -46,6 +46,11 @@ class EmailsController < ApplicationController
 
 		render :nothing => true, :status => 200
 
+	end
+
+	def checkout_ping
+		head :ok, content_type: "text/html"
+		headers['Access-Control-Allow-Origin'] = '*'
 	end
 
 end

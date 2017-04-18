@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   post 'order-creation' => 'emails#receive_order_created'
   post 'ajax-order-creation' => 'emails#receive_ajax'
+  post 'checkout-ping' => 'emails#checkout_ping'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
