@@ -157,7 +157,7 @@ module ApplicationHelper
 
 		order_to_mercury = {
 			"Additional Information"=> '',
-			"Bill Address1"=> '',
+			"Bill Address1"=> prop['Bill Address']&.strip,
 			"Bill Address2"=> '',
 			"Bill City"=> '',
 			"Bill Country"=> '',
@@ -167,7 +167,7 @@ module ApplicationHelper
 			"Bill Name"=> '',
 			"Bill Phone Area Code"=> '',
 			"Bill Phone Extension"=> '',
-			"Bill Phone Number"=> '',
+			"Bill Phone Number"=> prop['Bill Phone']&.strip,
 			"Bill Phone Prefix"=> '',
 			"Bill Phone2 Area Code"=> '',
 			"Bill Phone2 Extension"=> '',
