@@ -159,7 +159,7 @@ module ApplicationHelper
 			"Additional Information"=> '',
 			"Bill Address1"=> prop['Bill Address']&.strip,
 			"Bill Address2"=> '',
-			"Bill City"=> '',
+			"Bill City"=> prop['Bill City']&.strip,
 			"Bill Country"=> '',
 			"Bill Fax Area Code"=> '',
 			"Bill Fax Number"=> '',
@@ -173,8 +173,8 @@ module ApplicationHelper
 			"Bill Phone2 Extension"=> '',
 			"Bill Phone2 Number"=> '',
 			"Bill Phone2 Prefix"=> '',
-			"Bill State"=> '',
-			"Bill Zip Code"=> '',
+			"Bill State"=> prop['Bill State']&.strip,
+			"Bill Zip Code"=> prop['Bill Zip Code']&.strip,
 			"Card Message"=> prop['Card Message']&.strip,
 			"CC Cardholder"=> prop['House Account'],
 			"CC Company"=> 'INHOUSE',
@@ -259,6 +259,14 @@ module ApplicationHelper
 		    		]
 	    		}
 		    ],
+		    billing_address: {
+		    	address1: new_order['Bill Address1'],
+		    	city: new_order['Bill City'],
+		    	phone: new_order['Bill Phone Number'],
+		    	zip: new_order['Bill Zip Code'],
+		    	name: new_order['Bill Name'],
+		    	province: new_order['Bill State']
+		    },
 		    shipping_address: {
 		    	address1: new_order['Recipient Address1'],
 		    	city: new_order['Recipient City'],
@@ -289,7 +297,7 @@ module ApplicationHelper
 		qued_order[:order][:line_items] << { variant_id: ajax_info["bear_id"], quantity: new_order['Product Qty2'] } if new_order['Product Qty2']
 		qued_order[:order][:line_items] << { variant_id: ajax_info["balloon_id"], quantity: new_order['Product Qty3'] } if new_order['Product Qty3']
 		qued_order[:order][:line_items] << { variant_id: ajax_info["chocolate_id"], quantity: new_order['Product Qty4'] } if new_order['Product Qty4']
-		qued_order[:order][:line_items] << { variant_id: ajax_info["service_id"], quantity: 1 } if new_order['service_id'] != '' && new_order['service_id']
+		qued_order[:order][:line_items] << { variant_id: ajax_info["service_id"], quantity: 1 } if new_order['service_id'] != '' && ajax_info['service_id']
 
 		puts qued_order
 
