@@ -274,7 +274,8 @@ module ApplicationHelper
 					{"name"=>"Delivery Date", "value"=> prop['Delivery Date']},
 					# {"name"=>"Location Type", "value"=> prop['Location Type']},
 					# {"name"=>"Occasion Code", "value"=> prop['Occasion Code']},
-					{"name"=>"Card Message", "value"=> prop['Card Message']}
+					{"name"=>"Card Message", "value"=> prop['Card Message']},
+					{"name"=>"Checkout-Method", "value"=> prop['Checkout-Method']}
 		    ],
 		    tax_line: [
           {
