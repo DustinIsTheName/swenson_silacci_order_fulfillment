@@ -164,7 +164,7 @@ module ApplicationHelper
 			"Bill Fax Area Code"=> '',
 			"Bill Fax Number"=> '',
 			"Bill Fax Prefix"=> '',
-			"Bill Name"=> '',
+			"Bill Name"=> prop['House Account']&.strip,
 			"Bill Phone Area Code"=> '',
 			"Bill Phone Extension"=> '',
 			"Bill Phone Number"=> prop['Bill Phone']&.strip,
@@ -262,6 +262,7 @@ module ApplicationHelper
 		    billing_address: {
 		    	address1: new_order['Bill Address1'],
 		    	city: new_order['Bill City'],
+  				country: "US",
 		    	phone: new_order['Bill Phone Number'],
 		    	zip: new_order['Bill Zip Code'],
 		    	name: new_order['Bill Name'],
