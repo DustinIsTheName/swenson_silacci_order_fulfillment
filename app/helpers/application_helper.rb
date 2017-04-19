@@ -279,6 +279,7 @@ module ApplicationHelper
 		    ],
 		    tax_line: [
           {
+            rate: prop['Tax Rate'],
             price: prop['Tax Amount']
           }
         ]
