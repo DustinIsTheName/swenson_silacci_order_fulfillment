@@ -275,6 +275,7 @@ module ApplicationHelper
 		    	phone: new_order['Recipient Phone Number'],
 		    	zip: new_order['Recipient Zip Code'],
 		    	name: new_order['Recipient Name'],
+		    	company: new_order['Recipient Company'],
 		    	province: new_order['Recipient State']
 		    },
 		    email: new_order['E-mail Address'],
