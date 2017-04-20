@@ -291,7 +291,8 @@ module ApplicationHelper
             rate: prop['Tax Rate'],
             price: prop['Tax Amount']
           }
-        ]
+        ],
+        total_tax: prop['Tax Amount']
 		  }
 		}
 
