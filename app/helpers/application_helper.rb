@@ -63,9 +63,16 @@ module ApplicationHelper
 		end
 
 		service_price = if $service_product then $service_product['price'] else '' end
-		delivery_day = attributes['Delivery Date'].split('/')[1]
-		delivery_month = attributes['Delivery Date'].split('/')[0]
-		delivery_year = attributes['Delivery Date'].split('/')[2]
+
+		if attributes['Delivery Date']
+			delivery_day = attributes['Delivery Date'].split('/')[1]
+			delivery_month = attributes['Delivery Date'].split('/')[0]
+			delivery_year = attributes['Delivery Date'].split('/')[2]
+		else
+			delivery_day = ''
+			delivery_month = ''
+			delivery_year = ''
+		end
 
 		order_to_mercury = {
 			"Additional Information"=> '',
@@ -151,9 +158,15 @@ module ApplicationHelper
 
 		prop = order_from_ajax['attributes']
 
-		delivery_day = prop['Delivery Date'].split('/')[1]
-		delivery_month = prop['Delivery Date'].split('/')[0]
-		delivery_year = prop['Delivery Date'].split('/')[2]
+		if prop['Delivery Date']
+			delivery_day = prop['Delivery Date'].split('/')[1]
+			delivery_month = prop['Delivery Date'].split('/')[0]
+			delivery_year = prop['Delivery Date'].split('/')[2]
+		else
+			delivery_day = ''
+			delivery_month = ''
+			delivery_year = ''
+		end
 
 		order_to_mercury = {
 			"Additional Information"=> '',
