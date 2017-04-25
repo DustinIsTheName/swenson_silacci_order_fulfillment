@@ -132,18 +132,33 @@ module ApplicationHelper
 			order_to_mercury["CC Number"] = ''
 		end
 
-		order_to_mercury["Recipient Address1"] = order_body['shipping_address']['address1']&.strip
-		order_to_mercury["Recipient Address2"] = order_body['shipping_address']['address2']&.strip
-		order_to_mercury["Recipient City"] = order_body['shipping_address']['city']&.strip
-		order_to_mercury["Recipient Company"] = order_body['shipping_address']['company']&.strip
-		order_to_mercury["Recipient Country Code"] = order_body['shipping_address']['country_code']
-		order_to_mercury["Recipient Name"] = order_body['shipping_address']['name']&.strip
-		order_to_mercury["Recipient Phone Area Code"] = ship_phone_area
-		order_to_mercury["Recipient Phone Extension"] = ship_phone_extension
-		order_to_mercury["Recipient Phone Number"] = ship_phone_number
-		order_to_mercury["Recipient Phone Prefix"] = ship_phone_prefix
-		order_to_mercury["Recipient State"] = order_body['shipping_address']['province_code']
-		order_to_mercury["Recipient Zip Code"] = order_body['shipping_address']['zip']
+		if order_body['shipping_address']
+			order_to_mercury["Recipient Address1"] = order_body['shipping_address']['address1']&.strip
+			order_to_mercury["Recipient Address2"] = order_body['shipping_address']['address2']&.strip
+			order_to_mercury["Recipient City"] = order_body['shipping_address']['city']&.strip
+			order_to_mercury["Recipient Company"] = order_body['shipping_address']['company']&.strip
+			order_to_mercury["Recipient Country Code"] = order_body['shipping_address']['country_code']
+			order_to_mercury["Recipient Name"] = order_body['shipping_address']['name']&.strip
+			order_to_mercury["Recipient Phone Area Code"] = ship_phone_area
+			order_to_mercury["Recipient Phone Extension"] = ship_phone_extension
+			order_to_mercury["Recipient Phone Number"] = ship_phone_number
+			order_to_mercury["Recipient Phone Prefix"] = ship_phone_prefix
+			order_to_mercury["Recipient State"] = order_body['shipping_address']['province_code']
+			order_to_mercury["Recipient Zip Code"] = order_body['shipping_address']['zip']
+		else
+			order_to_mercury["Recipient Address1"] = ''
+			order_to_mercury["Recipient Address2"] = ''
+			order_to_mercury["Recipient City"] = ''
+			order_to_mercury["Recipient Company"] = ''
+			order_to_mercury["Recipient Country Code"] = ''
+			order_to_mercury["Recipient Name"] = ''
+			order_to_mercury["Recipient Phone Area Code"] = ''
+			order_to_mercury["Recipient Phone Extension"] = ''
+			order_to_mercury["Recipient Phone Number"] = ''
+			order_to_mercury["Recipient Phone Prefix"] = ''
+			order_to_mercury["Recipient State"] = ''
+			order_to_mercury["Recipient Zip Code"] = ''
+		end
 		order_to_mercury["Relay Charge"] = ''
 		order_to_mercury["Retrans Charge"] = ''
 		order_to_mercury["Service Charge"] = service_price
