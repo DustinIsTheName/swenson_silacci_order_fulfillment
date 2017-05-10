@@ -1,6 +1,12 @@
 class Function < ActiveRecord::Base
 
 	def self.checkForWebhook
+		shopify_shop='swenson-and-silacci-flowers.myshopify.com'
+		shopify_api_key='4cc4f2b265e47caddfbf4fdab6c66b48'
+		shopify_password='a6bff4ed6538965649c18c70bfe0f39f'
+
+		ShopifyAPI::Base.site = "https://#{shopify_api_key}:#{shopify_password}@#{shopify_shop}/admin"
+
 		webhooks = ShopifyAPI::Webhook.all
 		found_webhook = false
 		for webhook in webhooks
