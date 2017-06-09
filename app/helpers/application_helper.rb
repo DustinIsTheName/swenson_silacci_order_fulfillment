@@ -62,7 +62,15 @@ module ApplicationHelper
 			end
 		end
 
-		shipping_line_price = if order_body['shipping_lines'] then order_body['shipping_lines']['price'] else '' end
+		if order_body['shipping_lines'] 
+			if order_body['shipping_lines'][0]
+				shipping_line_price = order_body['shipping_lines'][0]['price'] 
+			else
+				shipping_line_price = ''
+			end
+		else 
+			shipping_line_price = ''
+		end
 
 		service_price = if $service_product then $service_product['price'] else shipping_line_price end
 
