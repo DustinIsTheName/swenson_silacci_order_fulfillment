@@ -62,7 +62,7 @@ module ApplicationHelper
 			end
 		end
 
-		service_price = if $service_product then $service_product['price'] else '' end
+		service_price = if $service_product then $service_product['price'] else attributes['Service Charge'] end
 
 		if attributes['Delivery Date']
 			delivery_day = attributes['Delivery Date'].split('/')[1]
@@ -161,7 +161,7 @@ module ApplicationHelper
 		end
 		order_to_mercury["Relay Charge"] = ''
 		order_to_mercury["Retrans Charge"] = ''
-		order_to_mercury["Service Charge"] = service_price
+		order_to_mercury["Service Charge"] = attributes['Service Charge']
 		order_to_mercury["Tax Amount"] = order_body['total_tax']
 		order_to_mercury["Total Order Amount"] = order_body['total_price']
 
