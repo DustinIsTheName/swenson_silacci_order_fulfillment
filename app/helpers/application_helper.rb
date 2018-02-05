@@ -119,7 +119,7 @@ module ApplicationHelper
 			"Occasion Code"=> attributes['Occasion Code'],
 			"Product Amount1"=> $main_product['price'],
 			"Product Code1"=> $main_product['sku'],
-			"Product Description1"=> $main_product['title'],
+			"Product Description1"=> "",
 			"Product Qty1"=> 1
 		}
 
@@ -128,7 +128,7 @@ module ApplicationHelper
 		$misc_prods.each do |misc_prod|
 			order_to_mercury["Product Amount"+i.to_s] = misc_prod['price']
 			order_to_mercury["Product Code"+i.to_s] = misc_prod['sku']
-			order_to_mercury["Product Description"+i.to_s] = misc_prod['title']
+			order_to_mercury["Product Description"+i.to_s] = ""
 			order_to_mercury["Product Qty"+i.to_s] = misc_prod['quantity']
 
 			i += 1
@@ -230,19 +230,19 @@ module ApplicationHelper
 			"Occasion Code"=> prop['Occasion Code'],
 			"Product Amount1"=> prop['Product1 Amount'],
 			"Product Code1"=> prop['Product1 Sku'],
-			"Product Description1"=> prop['Product1 Name'],
+			"Product Description1"=> "",
 			"Product Qty1"=> 1,
 			"Product Amount2"=> sprintf('%.2f', prop['Product2 Amount']),
 			"Product Code2"=> prop['Product2 Sku'],
-			"Product Description2"=> prop['Product2 Name'],
+			"Product Description2"=> "",
 			"Product Qty2"=> prop['bears_qty'],
 			"Product Amount3"=> sprintf('%.2f', prop['Product3 Amount']),
 			"Product Code3"=> prop['Product3 Sku'],
-			"Product Description3"=> prop['Product3 Name'],
+			"Product Description3"=> "",
 			"Product Qty3"=> prop['balloons_qty'],
 			"Product Amount4"=> prop['Product4 Amount'],
 			"Product Code4"=> prop['Product4 Sku'],
-			"Product Description4"=> prop['Product4 Name'],
+			"Product Description4"=> "",
 			"Product Qty4"=> prop['chocolates_qty'],
 			"Recipient Address1"=> prop['Ship Address1'],
 			"Recipient Address2"=> '',
