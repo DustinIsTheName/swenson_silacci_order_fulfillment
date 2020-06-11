@@ -15,14 +15,14 @@ class EmailsController < ApplicationController
 
 		if webhook[:body]["note"]
 			unless webhook[:body]["note"].include? 'house_account:'
-				if webhook.save!
+				if webhook.save
 
 					MercuryOrderMailer.send_order(webhook.body).deliver
 
 				end
 			end
 		else
-			if webhook.save!
+			if webhook.save
 
 				MercuryOrderMailer.send_order(webhook.body).deliver
 
