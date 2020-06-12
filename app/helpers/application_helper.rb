@@ -282,6 +282,7 @@ module ApplicationHelper
 		end
 
 		ShopifyAPI::Base.site = "https://#{shopify_api_key}:#{shopify_password}@#{shopify_shop}/admin"
+    ShopifyAPI::Base.api_version = '2019-10'
 
 		qued_order = {
 		  order: {

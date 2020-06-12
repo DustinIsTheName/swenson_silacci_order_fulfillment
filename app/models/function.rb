@@ -6,6 +6,7 @@ class Function < ActiveRecord::Base
 		shopify_password='a6bff4ed6538965649c18c70bfe0f39f'
 
 		ShopifyAPI::Base.site = "https://#{shopify_api_key}:#{shopify_password}@#{shopify_shop}/admin"
+    ShopifyAPI::Base.api_version = '2019-10'
 
 		webhooks = ShopifyAPI::Webhook.all
 		found_webhook = false
