@@ -10,8 +10,6 @@ class EmailsController < ApplicationController
   end
 
 	def receive_order_created
-
-		head :ok, content_type: "text/html"
 	
 		webhook = Webhook.new(:hook_id => params[:id], :body => params)
 
@@ -30,6 +28,8 @@ class EmailsController < ApplicationController
 
 			end
 		end
+
+    head :ok, content_type: "text/html"
 	end
 
 	def receive_ajax
@@ -38,7 +38,7 @@ class EmailsController < ApplicationController
 
 		ajax = AjaxRequest.new(:body => params)
 
-		if ajax.save!
+		if ajax.save
 
 			MercuryOrderMailer.send_ajax_order(ajax.body).deliver
 
