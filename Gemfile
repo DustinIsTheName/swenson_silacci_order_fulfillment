@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
-# ruby '2.3.0'
-ruby '2.6.4'
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
+gem 'rails', '4.2.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -15,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'whenever', :require => false
 
-gem 'shopify_app'
+gem 'shopify_app', '6.2.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -45,7 +44,9 @@ group :development, :test do
   gem 'spring'
 
   # Use sqlite3 as the database for Active Record
-	gem 'sqlite3', '~> 1.3.6'
+	gem 'sqlite3'
+
+  gem 'thin'
 end
 
 group :production do
